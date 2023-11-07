@@ -27,7 +27,6 @@ const Feed = () => {
     const fetchPosts = async () => {
       const response = await fetch('/api/prompt');
       const data = await response.json();
-
       setPosts(data);
     }
 
@@ -49,7 +48,7 @@ const Feed = () => {
 
       <PromptCardList
         data={posts}
-        handleTagClick={() => (console.log('oi'))}
+        handleTagClick={() => {}}
       />
 
     </section>
