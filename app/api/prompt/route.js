@@ -29,8 +29,8 @@ export const GET = async (request) => {
         const creatorsIds = creators.map(creator => creator._id.toString());
         let creatorsMatches = [];
 
-        if (creatorsIds.length)
-          creatorsMatches = await Prompt.find({ creators: {$in: creatorsIds}}).populate('creator').lean();
+        if (creatorsIds.length) 
+          creatorsMatches = await Prompt.find({ creator: {$in: creatorsIds}}).populate('creator').lean();
         
         const combinedResults = [...promptMatches, ...creatorsMatches];
         
