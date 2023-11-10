@@ -24,13 +24,21 @@ const Feed = () => {
   const handleSearchChange = async (e) => {
     const searchTextValue = e.target.value;
     setSearchText(searchTextValue);
-
+    fetchPosts(searchTextValue);
+  }
+  
+  const fetchPosts = async (searchTextValue) => {
     const response = await fetch(`/api/prompt?filter=${searchTextValue}`);
     if (response.status === 204) setPosts([]);
     else {
       const data = await response.json();
       setPosts(data);
     }
+  }
+
+  const handleTagClick = (postTagText) => {
+    setSearchText(postTagText);
+    fetchPosts(postTagText);
   }
 
   useEffect(() => {
@@ -58,7 +66,7 @@ const Feed = () => {
 
       <PromptCardList
         data={posts}
-        handleTagClick={() => {}}
+        handleTagClick={handleTagClick}
       />
 
     </section>

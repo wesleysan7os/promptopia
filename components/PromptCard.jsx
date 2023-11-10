@@ -11,11 +11,11 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const { data: session } = useSession();
   const pathName = usePathname();
 
-   const handleCopy = () => {
+  const handleCopy = () => {
     setCopied(post.prompt);
     navigator.clipboard.writeText(post.prompt);
     setTimeout(() => setCopied(""), 3000);
-   }
+  }
 
   return (
     <div className="prompt_card">
@@ -52,11 +52,14 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
         </div>
       </div>
 
-      <p
-        className="my-4 font-satoshi text-sm text-gray-700"
+      <p className="my-4 font-satoshi text-sm text-gray-700">{post.prompt}</p>
+
+      <p 
         onClick={() => handleTagClick && handleTagClick(post.tag)}
-      >{post.prompt}</p>
-      <p>{post.tag}</p>
+        className="cursor-pointer"
+      >
+        #{post.tag}
+      </p>
 
       {session?.user.id === post.creator._id && pathName === '/profile' && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
