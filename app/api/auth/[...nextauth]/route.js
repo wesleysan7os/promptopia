@@ -24,11 +24,16 @@ const handler = NextAuth({
 		async signIn({ profile }) {
 			try {
 				await connectToDB();
+
+				console.log("profile.picture: ", typeof profile.picture)
 	
 				// check if a user already exists
-				const userExists = await User.findOne({
-					email: profile.email
-				});
+				const userExists = await User.findOneAndUpdate(
+					{ email: profile.email },
+  					{ $set: { image: profile.picture } }
+				);
+
+				console.log("User: ", userExists);
 	
 				// if not, create a new user
 				if (!userExists) {
