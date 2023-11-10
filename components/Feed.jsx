@@ -21,7 +21,17 @@ const Feed = () => {
   const [searchText, setSearchText] = useState('');
   const [posts, setPosts] = useState([]);
 
-  const handleSearchChange = (e) => {}
+  const handleSearchChange = async (e) => {
+    const searchTextValue = e.target.value;
+    setSearchText(searchTextValue);
+
+    const response = await fetch(`/api/prompt?filter=${searchTextValue}`);
+    if (response.status === 204) setPosts([]);
+    else {
+      const data = await response.json();
+      setPosts(data);
+    }
+  }
 
   useEffect(() => {
     const fetchPosts = async () => {
