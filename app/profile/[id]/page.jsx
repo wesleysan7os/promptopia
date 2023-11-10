@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { useSession } from 'next-auth/react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 
@@ -10,7 +9,6 @@ import Profile from '@components/Profile';
 const GeneralProfileView = () => {
 	const router = useRouter();
 	const pathName = usePathname();
-  const { data:session } = useSession();
   const [posts, setPosts] = useState([]);
 	const searchParams = useSearchParams();
 
