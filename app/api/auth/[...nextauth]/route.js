@@ -27,14 +27,11 @@ const handler = NextAuth({
 
 				console.log("profile.picture: ", typeof profile.picture)
 	
-				// check if a user already exists
-				const userExists = await User.findOneAndUpdate(
-					{ email: profile.email },
-  					{ $set: { image: profile.picture } }
-				);
+				// check if the user already exists
+				const userExists = await User.findOne({
+					email: profile.email
+				});
 
-				console.log("User: ", userExists);
-	
 				// if not, create a new user
 				if (!userExists) {
 					await User.create({
