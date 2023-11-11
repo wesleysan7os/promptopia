@@ -2,8 +2,7 @@
 <h1 align="center">Promptopia</h1>
 
 ---
-<img align="right" src="https://github.com/wesleysan7os/promptopia/blob/main/public/assets/images/printscreen-dashboard.png" alt="printscreen-dasboard" width="215px">
-<img align="right" src="https://github.com/wesleysan7os/promptopia/blob/main/public/assets/images/printscreen-mobile.png" alt="printscreen-mobile">
+<img align="right" src="https://github.com/wesleysan7os/promptopia/blob/main/public/assets/images/printscreen-promptopia.png" alt="printscreen-dasboard" width="555px">
 
 
 # :pushpin: Table of Contents
