@@ -25,12 +25,11 @@ const handler = NextAuth({
 			try {
 				await connectToDB();
 
-				console.log("profile.picture: ", typeof profile.picture)
-	
 				// check if the user already exists
-				const userExists = await User.findOne({
-					email: profile.email
-				});
+				const userExists = await User.findOne(
+					{ email: profile.email },
+					{ $set: { image: profile.picture } }
+				);
 
 				// if not, create a new user
 				if (!userExists) {
