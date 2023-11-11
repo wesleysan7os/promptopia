@@ -26,7 +26,7 @@ const handler = NextAuth({
 				await connectToDB();
 
 				// check if the user already exists
-				const userExists = await User.findOne(
+				const userExists = await User.findOneAndUpdate(
 					{ email: profile.email },
 					{ $set: { image: profile.picture } }
 				);
